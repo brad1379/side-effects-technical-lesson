@@ -32,6 +32,20 @@ function App() {
 
   // 3. TODO: useEffect to set up a window event listener (e.g., for clicks)
   //    - Return a cleanup function to remove the event listener on unmount.
+  useEffect(() => {
+    const handleWindowClick = () => {
+      console.log("Window was clicked!");
+    };
+
+    // Add event listener
+    window.addEventListener("click", handleWindowClick);
+
+    // Cleanup to remove the listener in the unmount
+    return () => {
+      window.removeEventListener("click", handleWindowClick); 
+    };
+  }, []);
+
   return (
   <div>
     <h1>Hello, {userName}!</h1>
